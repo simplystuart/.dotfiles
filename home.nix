@@ -106,6 +106,7 @@
       shellAliases = {
         cat = "bat";
         ls = "exa";
+        cd = "z";
       };
       syntaxHighlighting.enable = true;
     };
