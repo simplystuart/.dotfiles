@@ -14,7 +14,7 @@ return {
 	formatters_by_ft_to_formatter = formatters_by_ft_to_formatter,
 	formatters_by_ft = {
 		bash = { "beautysh" },
-		elm = { "elm_format" },
+		elm = { "elm-format" },
 		css = { "stylelint" },
 		html = { "htmlbeautifier" },
 		javascript = { { "prettierd", "prettier" } },
