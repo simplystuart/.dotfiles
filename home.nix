@@ -11,6 +11,11 @@
     target = ".config/nvim";
   };
 
+  home.file.".config/starship.toml" = {
+    source = ./starship.toml;
+    target = ".config/starship.toml";
+  };
+
   home.packages = [
     pkgs.bat
     pkgs.coreutils
