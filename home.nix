@@ -95,6 +95,13 @@
       autosuggestion.enable = true;
       enable = true;
       enableCompletion = true;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+          "git"
+        ];
+        theme = "";
+      };
       initExtra = "bindkey '\t' end-of-line";
       shellAliases = {
         cat = "bat";
