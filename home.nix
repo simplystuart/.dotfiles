@@ -33,7 +33,6 @@
     pkgs.jq
     pkgs.lazygit
     pkgs.nerdfonts
-    pkgs.nix-zsh-completions
     pkgs.nodejs
     pkgs.ripgrep
     pkgs.scc
@@ -42,7 +41,6 @@
     pkgs.watch
     pkgs.wget
     pkgs.youtube-dl
-    pkgs.zsh-autocomplete
   ];
 
   programs = {
@@ -94,12 +92,16 @@
     zoxide.enable = true;
 
     zsh = {
+      autosuggestion.enable = true;
+      defaultKeymap = "vicmd";
       enable = true;
-      enableCompletion = false;
+      enableCompletion = true;
+      initExtra = "bindkey '\t' end-of-line";
       shellAliases = {
         cat = "bat";
         ls = "exa";
       };
+      syntaxHighlighting.enable = true;
     };
   };
 }
