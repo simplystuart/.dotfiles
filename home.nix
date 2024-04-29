@@ -93,7 +93,6 @@
 
     zsh = {
       autosuggestion.enable = true;
-      defaultKeymap = "vicmd";
       enable = true;
       enableCompletion = true;
       initExtra = "bindkey '\t' end-of-line";
