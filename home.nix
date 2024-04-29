@@ -80,7 +80,6 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
-      extraLuaConfig = builtins.readFile ./nvim/init.lua;
     };
 
     starship = {
