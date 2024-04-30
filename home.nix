@@ -89,24 +89,20 @@
       extraConfig = builtins.readFile ./tmux.conf;
     };
 
-    zoxide.enable = true;
+    zoxide = {
+      enable = true;
+      options = [
+        "--cmd cd"
+      ];
+    };
 
     zsh = {
-      autosuggestion.enable = true;
+      autosuggestion.enable = false;
       enable = true;
       enableCompletion = true;
-      oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "git"
-        ];
-        theme = "";
-      };
-      initExtra = "bindkey '\t' end-of-line";
       shellAliases = {
         cat = "bat";
         ls = "exa";
-        cd = "z";
       };
       syntaxHighlighting.enable = true;
     };
