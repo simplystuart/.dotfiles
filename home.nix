@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  fonts.fontconfig.enable = true;
+
   home = {
     homeDirectory = "/Users/stuartdum";
     stateVersion = "22.11";
