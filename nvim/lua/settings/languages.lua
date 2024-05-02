@@ -1,5 +1,5 @@
-local formatters_by_ft_to_formatter = function(formatters_by_ft)
-	for _, formatter in pairs(formatters_by_ft) do
+local to_formatter = function(formatters_dict)
+	for _, formatter in pairs(formatters_dict) do
 		local items = {}
 
 		for _, item in pairs(formatter) do
@@ -11,8 +11,8 @@ local formatters_by_ft_to_formatter = function(formatters_by_ft)
 end
 
 return {
-	formatters_by_ft_to_formatter = formatters_by_ft_to_formatter,
-	formatters_by_ft = {
+	to_formatter = to_formatter,
+	formatters_dict = {
 		bash = { "beautysh" },
 		elm = { "elm-format" },
 		css = { "stylelint" },

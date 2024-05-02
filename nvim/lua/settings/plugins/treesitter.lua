@@ -1,4 +1,4 @@
-local polyglot = require("settings.polyglot")
+local languages = require("settings.languages")
 
 return {
 	"nvim-treesitter/nvim-treesitter",
@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			auto_install = true,
-			ensure_installed = polyglot.parsers,
+			ensure_installed = languages.parsers,
 			highlight = {
 				additional_vim_regex_highlighting = false,
 				enable = true,

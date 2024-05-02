@@ -1,6 +1,6 @@
 -- heavily inspired (and/or copied) from @ThePrimeagen
 
-local polyglot = require("settings.polyglot")
+local languages = require("settings.languages")
 
 return {
 	"neovim/nvim-lspconfig",
@@ -32,7 +32,7 @@ return {
 		require("mason").setup()
 
 		require("mason-lspconfig").setup({
-			ensure_installed = polyglot.lsps,
+			ensure_installed = languages.lsps,
 			handlers = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({

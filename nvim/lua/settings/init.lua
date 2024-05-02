@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-require("settings.load_lazy")
+require("settings.lazy")
 require("settings.mappings")
 
 -- columns

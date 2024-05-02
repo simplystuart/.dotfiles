@@ -1,6 +1,4 @@
-local polyglot = require("settings.polyglot")
-
-local formatters = polyglot.formatters_by_ft_to_formatter(polyglot.formatters_by_ft)
+local languages = require("settings.languages")
 
 return {
 	"williamboman/mason.nvim",
@@ -10,7 +8,7 @@ return {
 	config = function()
 		require("mason").setup()
 		require("mason-tool-installer").setup({
-			ensure_installed = formatters,
+			ensure_installed = languages.to_formatter(languages.formatters_dict),
 		})
 	end,
 }
