@@ -29,6 +29,12 @@
     target = ".config/starship.toml";
   };
 
+  home.file.".local/bin" = {
+    recursive = true;
+    source = ./scripts;
+    target = ".local/bin";
+  };
+
   home.packages = [
     pkgs.bat
     pkgs.coreutils
@@ -113,6 +119,7 @@
       enable = true;
       enableCompletion = true;
       initExtra = ''
+        export PATH="$HOME/.local/bin:$PATH"
         export EDITOR=vim
       '';
       shellAliases = {

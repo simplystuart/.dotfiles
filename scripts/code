@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if [[ $# -eq 1 ]]; then
+    project_dir=$1
+else
+    project_dir=$(find ~/Projects -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $project_dir ]]; then
+    exit 0
+fi
+
+project=$(basename "$project_dir" | tr . _)
+
+if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
+    tmux new-session -s $project -c $project_dir
+    exit 0
+fi
+
+if ! tmux has-session -t=$project 2> /dev/null; then
+    tmux new-session -s $project -c $project_dir
+else
+    tmux a -t $project
+fi
+
