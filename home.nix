@@ -1,10 +1,21 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   fonts.fontconfig.enable = true;
 
   home = {
     homeDirectory = "/Users/stuartdum";
     stateVersion = "22.11";
     username = "stuartdum";
+  };
+
+  home.activation = {
+    unlinkExistingLazyLock = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
+      if [ -e $HOME/.config/nvim/lazy-lock.json ]; then
+        unlink $HOME/.config/nvim/lazy-lock.json
+      fi
+    '';
+    linkLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
+    '';
   };
 
   home.file.".config/nvim" = {
