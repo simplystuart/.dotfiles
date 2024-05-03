@@ -110,9 +110,11 @@
     };
 
     zsh = {
-      autosuggestion.enable = false;
       enable = true;
       enableCompletion = true;
+      initExtra = ''
+        export EDITOR=vim
+      '';
       shellAliases = {
         cat = "bat";
         ls = "exa";
