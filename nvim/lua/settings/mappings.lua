@@ -16,5 +16,8 @@ vim.keymap.set("n", "<leader>s", vim.cmd.vsplit)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- project mgmt
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww code<CR>")
+
 -- show invisibles
 vim.keymap.set("n", "<leader>i", ":set invlist<CR>", { noremap = true, silent = true })

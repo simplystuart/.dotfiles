@@ -18,8 +18,7 @@ if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
 fi
 
 if ! tmux has-session -t=$project 2> /dev/null; then
-    tmux new-session -s $project -c $project_dir
-else
-    tmux a -t $project
+    tmux new-session -ds $project -c $project_dir
 fi
 
+tmux switch-client -t $project
