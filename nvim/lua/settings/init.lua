@@ -5,6 +5,7 @@ require("settings.mappings")
 
 -- columns
 vim.opt.colorcolumn = "81"
+vim.opt.nu = true
 vim.opt.wrap = false
 
 -- indents

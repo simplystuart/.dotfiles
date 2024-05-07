@@ -21,3 +21,7 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww code<CR>")
 
 -- show invisibles
 vim.keymap.set("n", "<leader>i", ":set invlist<CR>", { noremap = true, silent = true })
+
+-- toggle line numbers
+vim.keymap.set("n", "<leader>sn", ":set nu<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>hn", ":set invnu<CR>", { noremap = true, silent = true })
