@@ -118,6 +118,11 @@
     zsh = {
       enable = true;
       enableCompletion = true;
+      history = {
+        extended = true;
+        save = 1000000000;
+        size = 1000000000;
+      };
       initExtra = ''
         export PATH="$HOME/.local/bin:$PATH"
         export EDITOR=vim
