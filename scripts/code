@@ -7,18 +7,21 @@ else
 fi
 
 if [[ -z $project_dir ]]; then
-    exit 0
+    exit 1
 fi
 
 project=$(basename "$project_dir" | tr . _)
 
 if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
     tmux new-session -s $project -c $project_dir
-    exit 0
 fi
 
 if ! tmux has-session -t=$project 2> /dev/null; then
     tmux new-session -ds $project -c $project_dir
 fi
 
-tmux switch-client -t $project
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t $project
+else
+    tmux switch-client -t $project
+fi
