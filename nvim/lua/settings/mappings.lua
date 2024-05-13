@@ -12,6 +12,9 @@ vim.keymap.set("n", "<C-H>", "<C-W><C-H>", {})
 vim.keymap.set("n", "<leader>x", vim.cmd.Ex) -- 🚀 space x
 vim.keymap.set("n", "<leader>s", vim.cmd.vsplit)
 
+-- formatting
+vim.keymap.set("n", "<leader>f", "vim.lsp.buf.format")
+
 -- move the lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -20,8 +23,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww code<CR>")
 
 -- show invisibles
-vim.keymap.set("n", "<leader>i", ":set invlist<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>i", ":set invlist<CR>")
 
 -- toggle line numbers
-vim.keymap.set("n", "<leader>sn", ":set nu<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>hn", ":set invnu<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>sn", ":set nu<CR>")
+vim.keymap.set("n", "<leader>hn", ":set invnu<CR>")
