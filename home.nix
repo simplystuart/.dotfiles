@@ -46,6 +46,7 @@
     pkgs.gh
     pkgs.gnugrep
     pkgs.gnused
+    pkgs.go
     pkgs.htop
     pkgs.imagemagick
     pkgs.jpegoptim
@@ -54,6 +55,7 @@
     pkgs.nerdfonts
     pkgs.nodejs
     pkgs.ripgrep
+    pkgs.rustup
     pkgs.scc
     pkgs.ssh-copy-id
     pkgs.tree
