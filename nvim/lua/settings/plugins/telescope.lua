@@ -15,10 +15,10 @@ return {
 		local builtin = require("telescope.builtin")
 
 		vim.keymap.set("n", "<leader>lb", builtin.buffers, {}) -- buffer
-		vim.keymap.set("n", "<leader>ld", builtin.lsp_definitions, {}) -- defs
 		vim.keymap.set("n", "<leader>lf", builtin.find_files, {}) -- file
 		vim.keymap.set("n", "<leader>lh", builtin.help_tags, {}) -- help
 		vim.keymap.set("n", "<leader>ls", builtin.live_grep, {}) -- search
+		vim.keymap.set("n", "<leader>lu", builtin.lsp_definitions, {}) -- lookup
 
 		--  git
 		vim.keymap.set("n", "<leader>lg", function()

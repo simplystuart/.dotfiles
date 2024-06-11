@@ -10,7 +10,6 @@ vim.keymap.set("n", "<C-H>", "<C-W><C-H>", {})
 
 -- file mgmt
 vim.keymap.set("n", "<leader>x", vim.cmd.Ex) -- 🚀 space x
-vim.keymap.set("n", "<leader>s", vim.cmd.vsplit)
 
 -- formatting
 vim.keymap.set("n", "<leader>f", "vim.lsp.buf.format")
