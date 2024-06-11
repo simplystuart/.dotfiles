@@ -134,7 +134,7 @@
       '';
       shellAliases = {
         cat = "bat";
-        ls = "exa";
+        ls = "exa --group-directories-first";
       };
       syntaxHighlighting.enable = true;
     };
