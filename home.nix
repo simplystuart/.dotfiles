@@ -133,7 +133,7 @@
         export EDITOR=vim
       '';
       shellAliases = {
-        cat = "bat";
+        cat = "bat --theme=\"Everforest Dark\"";
         ls = "exa --group-directories-first";
       };
       syntaxHighlighting.enable = true;
