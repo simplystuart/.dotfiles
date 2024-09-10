@@ -37,6 +37,7 @@
 
   home.packages = [
     pkgs.bat
+    pkgs.chruby
     pkgs.coreutils
     pkgs.curl
     pkgs.deno
@@ -132,6 +133,11 @@
       initExtra = ''
         export PATH="$HOME/.local/bin:$PATH"
         export EDITOR=vim
+        source $HOME/.nix-profile/share/chruby/chruby.sh
+        source $HOME/.nix-profile/share/chruby/auto.sh
+        export RUBIES=(
+          $HOME/.nix-profile
+        )
       '';
       shellAliases = {
         cat = "bat";
