@@ -55,6 +55,7 @@
     pkgs.nerdfonts
     pkgs.nodejs
     pkgs.ripgrep
+    pkgs.ruby_3_3
     pkgs.rustup
     pkgs.scc
     pkgs.ssh-copy-id
