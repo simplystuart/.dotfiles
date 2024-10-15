@@ -60,6 +60,7 @@
     pkgs.rustup
     pkgs.scc
     pkgs.ssh-copy-id
+    pkgs.stack
     pkgs.tree
     pkgs.watch
     pkgs.wget
