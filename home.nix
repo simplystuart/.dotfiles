@@ -64,7 +64,7 @@
     pkgs.tree
     pkgs.watch
     pkgs.wget
-    pkgs.youtube-dl
+    pkgs.yt-dlp
   ];
 
   programs = {
