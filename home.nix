@@ -41,6 +41,9 @@
     pkgs.coreutils
     pkgs.curl
     pkgs.deno
+    pkgs.elmPackages.elm
+    pkgs.elmPackages.elm-format
+    pkgs.elmPackages.elm-json
     pkgs.exiftool
     pkgs.ffmpeg
     pkgs.findutils
@@ -53,8 +56,12 @@
     pkgs.jpegoptim
     pkgs.jq
     pkgs.lazygit
+    pkgs.lua51Packages.lua
+    pkgs.luajitPackages.luarocks
     pkgs.nerdfonts
+    pkgs.nodePackages.prettier
     pkgs.nodejs
+    pkgs.prettierd
     pkgs.ripgrep
     pkgs.ruby_3_3
     pkgs.rustup
