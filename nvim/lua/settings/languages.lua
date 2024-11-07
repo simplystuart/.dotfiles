@@ -18,7 +18,7 @@ return {
 		elm = { "elm_format" },
 		css = { "stylelint" },
 		html = { "htmlbeautifier" },
-		javascript = { { "prettierd", "prettier" } },
+		javascript = { "prettierd", "prettier" },
 		lua = { "stylua" },
 		ruby = { "standardrb" },
 		rust = { "rustfmt" },
