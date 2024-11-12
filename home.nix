@@ -16,6 +16,17 @@
     linkLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
     '';
+    linkRuby = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      if [ ! -d $HOME/.rubies/ruby-3.3.5/bin ]; then
+        mkdir -p $HOME/.rubies/ruby-3.3.5/bin
+      fi
+
+      if [ -e $HOME/.rubies/ruby-3.3.5/bin/ruby ]; then
+        unlink $HOME/.rubies/ruby-3.3.5/bin/ruby
+      fi
+
+      ln -s $HOME/.nix-profile/bin/ruby $HOME/.rubies/ruby-3.3.5/bin/ruby
+    '';
   };
 
   home.file.".config/nvim" = {
@@ -64,6 +75,7 @@
     pkgs.prettierd
     pkgs.ripgrep
     pkgs.ruby_3_3
+    pkgs.rubyPackages_3_3.rubocop
     pkgs.rustup
     pkgs.scc
     pkgs.ssh-copy-id
@@ -112,6 +124,7 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
+      withRuby = false;
     };
 
     starship = {
@@ -139,17 +152,17 @@
         size = 1000000000;
       };
       initExtra = ''
-        export PATH="$HOME/.local/bin:$PATH"
+        export BUNDLE_CACHE_PATH="$HOME/.cache/bundle"
         export EDITOR=vim
+        export PATH="$HOME/.local/bin:$PATH"
+
         source $HOME/.nix-profile/share/chruby/chruby.sh
         source $HOME/.nix-profile/share/chruby/auto.sh
-        export RUBIES=(
-          $HOME/.nix-profile
-        )
       '';
       shellAliases = {
         cat = "bat";
         ls = "exa --group-directories-first";
+        rbf = "rubocop -f github -a";
       };
       syntaxHighlighting.enable = true;
     };
