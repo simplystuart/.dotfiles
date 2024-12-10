@@ -64,7 +64,7 @@
     pkgs.lazygit
     pkgs.lua51Packages.lua
     pkgs.luajitPackages.luarocks
-    pkgs.nerdfonts
+    pkgs.nerd-fonts.meslo-lg
     pkgs.nodePackages.prettier
     pkgs.nodejs
     pkgs.prettierd
@@ -155,7 +155,7 @@
         cat = "bat --theme=\"Everforest Dark\"";
         ls = "exa --group-directories-first";
         reload = "exec $SHELL -l";
-        sweep = "nix-collect-garbage -d";
+        sweep = "nix-collect-garbage -d && nix flake update";
         update = "home-manager switch -b bak";
       };
       syntaxHighlighting.enable = true;
