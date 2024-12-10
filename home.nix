@@ -47,11 +47,11 @@
   };
 
   home.packages = [
+    pkgs.asdf-vm
     pkgs.bat
     pkgs.chruby
     pkgs.coreutils
     pkgs.curl
-    pkgs.deno
     pkgs.elmPackages.elm
     pkgs.elmPackages.elm-format
     pkgs.elmPackages.elm-json
@@ -61,7 +61,6 @@
     pkgs.gh
     pkgs.gnugrep
     pkgs.gnused
-    pkgs.go
     pkgs.htop
     pkgs.imagemagick
     pkgs.jpegoptim
@@ -74,12 +73,8 @@
     pkgs.nodejs
     pkgs.prettierd
     pkgs.ripgrep
-    pkgs.ruby_3_3
-    pkgs.rubyPackages_3_3.rubocop
-    pkgs.rustup
     pkgs.scc
     pkgs.ssh-copy-id
-    pkgs.stack
     pkgs.tree
     pkgs.watch
     pkgs.wget
@@ -156,13 +151,16 @@
         export EDITOR=vim
         export PATH="$HOME/.local/bin:$PATH"
 
+        source $HOME/.nix-profile/share/asdf-vm/asdf.sh
         source $HOME/.nix-profile/share/chruby/chruby.sh
         source $HOME/.nix-profile/share/chruby/auto.sh
       '';
       shellAliases = {
         cat = "bat";
         ls = "exa --group-directories-first";
-        rbf = "rubocop -f github -a";
+        reload = "exec $SHELL -l";
+        sweep = "nix-collect-garbage -d";
+        update = "home-manager switch -b bak";
       };
       syntaxHighlighting.enable = true;
     };
