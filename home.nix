@@ -16,13 +16,6 @@
     linkLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
     '';
-    linkRuby = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      if [ ! -d $HOME/.rubies/ruby-3.3.5/bin ]; then
-        mkdir -p $HOME/.rubies/ruby-3.3.5/bin
-      fi
-
-      if [ -e $HOME/.rubies/ruby-3.3.5/bin/ruby ]; then
-        unlink $HOME/.rubies/ruby-3.3.5/bin/ruby
       fi
 
       ln -s $HOME/.nix-profile/bin/ruby $HOME/.rubies/ruby-3.3.5/bin/ruby

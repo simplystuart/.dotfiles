@@ -57,6 +57,16 @@ return {
 						},
 					})
 				end,
+
+				["ruby_lsp"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.ruby_lsp.setup({
+						init_options = {
+							formatter = "standardrb",
+							linters = { "standardrb" },
+						},
+					})
+				end,
 			},
 		})
 

@@ -20,7 +20,7 @@ return {
 		html = { "htmlbeautifier" },
 		javascript = { "prettierd", "prettier" },
 		lua = { "stylua" },
-		ruby = { "rubocop" },
+		ruby = { "standardrb" },
 		rust = { "rustfmt" },
 	},
 	lsps = {
