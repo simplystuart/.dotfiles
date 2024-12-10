@@ -8,17 +8,20 @@
   };
 
   home.activation = {
-    unlinkExistingLazyLock = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
+    unlinkLastLazyLock = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
       if [ -e $HOME/.config/nvim/lazy-lock.json ]; then
         unlink $HOME/.config/nvim/lazy-lock.json
       fi
     '';
-    linkLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
-    '';
+    addBatColorTheme = lib.hm.dag.entryAfter [ "installPackages" ] ''
+      if [ ! -d $HOME/.config/bat/themes ]; then
+        mkdir -p $HOME/.config/bat/themes
+        ${pkgs.git}/bin/git clone https://github.com/mhanberg/everforest-textmate.git $HOME/.config/bat/themes/everforest-textmate
+        ${pkgs.bat}/bin/bat cache --build
       fi
-
-      ln -s $HOME/.nix-profile/bin/ruby $HOME/.rubies/ruby-3.3.5/bin/ruby
+    '';
+    linkLatestLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
     '';
   };
 
@@ -149,7 +152,7 @@
         source $HOME/.nix-profile/share/chruby/auto.sh
       '';
       shellAliases = {
-        cat = "bat";
+        cat = "bat --theme=\"Everforest Dark\"";
         ls = "exa --group-directories-first";
         reload = "exec $SHELL -l";
         sweep = "nix-collect-garbage -d";
