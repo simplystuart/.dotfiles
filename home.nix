@@ -23,6 +23,11 @@
     linkLatestLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
       ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
     '';
+    linkRubies = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
+      if [ ! -e $HOME/.rubies ]; then
+        ln -s $HOME/.asdf/installs/ruby $HOME/.rubies
+      fi
+    '';
   };
 
   home.file.".config/nvim" = {
