@@ -17,6 +17,7 @@ return {
 		bash = { "beautysh" },
 		elm = { "elm_format" },
 		css = { "stylelint" },
+		haskell = { "ormolu" },
 		html = { "htmlbeautifier" },
 		javascript = { "prettierd", "prettier" },
 		lua = { "stylua" },
@@ -25,6 +26,7 @@ return {
 	},
 	lsps = {
 		"elmls",
+		"hls",
 		"lua_ls",
 		"ruby_lsp",
 		"rust_analyzer",

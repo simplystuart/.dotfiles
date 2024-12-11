@@ -60,6 +60,7 @@
     pkgs.ffmpeg
     pkgs.findutils
     pkgs.gh
+    pkgs.git-lfs
     pkgs.gnugrep
     pkgs.gnused
     pkgs.htop
