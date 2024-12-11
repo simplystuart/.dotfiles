@@ -13,7 +13,7 @@
         unlink $HOME/.config/nvim/lazy-lock.json
       fi
     '';
-    addBatColorTheme = lib.hm.dag.entryAfter [ "installPackages" ] ''
+    addBatTheme = lib.hm.dag.entryAfter [ "installPackages" ] ''
       if [ ! -d $HOME/.config/bat/themes ]; then
         mkdir -p $HOME/.config/bat/themes
         ${pkgs.git}/bin/git clone https://github.com/mhanberg/everforest-textmate.git $HOME/.config/bat/themes/everforest-textmate
@@ -153,10 +153,10 @@
       '';
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
+        clean = "nix-collect-garbage -d && nix flake update";
         ls = "exa --group-directories-first";
         reload = "exec $SHELL -l";
-        sweep = "nix-collect-garbage -d && nix flake update";
-        update = "home-manager switch -b bak";
+        reno = "home-manager switch -b bak";
       };
       syntaxHighlighting.enable = true;
     };
