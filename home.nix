@@ -101,9 +101,10 @@
 
     git = {
       aliases = {
-        ci = "commit";
+        cm = "commit";
         co = "checkout";
-        di = "diff";
+        df = "diff";
+        fp = "push --force-with-lease";
         sh = "show";
         st = "status";
       };
@@ -160,6 +161,7 @@
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
         clean = "nix-collect-garbage -d && nix flake update";
+        g = "git";
         ls = "exa --group-directories-first";
         reload = "exec $SHELL -l";
         reno = "home-manager switch -b bak";
