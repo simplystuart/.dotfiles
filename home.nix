@@ -157,6 +157,9 @@
         source $HOME/.nix-profile/share/asdf-vm/asdf.sh
         source $HOME/.nix-profile/share/chruby/chruby.sh
         source $HOME/.nix-profile/share/chruby/auto.sh
+
+        eval "$(pyenv init -)"
+        eval "$(pyenv init --path)
       '';
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
