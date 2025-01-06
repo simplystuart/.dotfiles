@@ -159,7 +159,7 @@
         source $HOME/.nix-profile/share/chruby/auto.sh
 
         eval "$(pyenv init -)"
-        eval "$(pyenv init --path)
+        eval "$(pyenv init --path)"
       '';
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
