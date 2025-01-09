@@ -19,7 +19,7 @@ return {
 		css = { "stylelint" },
 		haskell = { "ormolu" },
 		html = { "htmlbeautifier" },
-		javascript = { "prettierd", "prettier" },
+		javascript = { "eslint_d", "prettierd", "prettier" },
 		lua = { "stylua" },
 		ruby = { "standardrb" },
 		rust = { "rustfmt" },
