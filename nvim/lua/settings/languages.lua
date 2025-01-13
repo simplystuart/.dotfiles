@@ -20,6 +20,7 @@ return {
 		haskell = { "ormolu" },
 		html = { "htmlbeautifier" },
 		javascript = { "eslint_d", "prettierd", "prettier" },
+		typescript = { "eslint_d", "prettierd", "prettier" },
 		lua = { "stylua" },
 		ruby = { "standardrb" },
 		rust = { "rustfmt" },
