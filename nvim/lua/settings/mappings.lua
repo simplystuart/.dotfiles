@@ -29,4 +29,4 @@ vim.keymap.set("n", "<leader>sn", ":set nu<CR>")
 vim.keymap.set("n", "<leader>hn", ":set invnu<CR>")
 
 -- exit terminal insert mode
-vim.keymap.set("t", "<C-o>", "<C-\\><C-n>", { noremap = true })
+vim.keymap.set("t", "<C-t>", "<C-\\><C-n>", { noremap = true })
