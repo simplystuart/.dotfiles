@@ -42,14 +42,14 @@ sudo launchctl kickstart -k system/org.nixos.nix-daemon
 
 3. Setup env:
 
-First, generate an SSH key and add it to your GitHub account:
+- First, generate an SSH key and add it to your GitHub account:
 
 ```bash
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub | pbcopy
 ```
 
-Then, clone and symlink the .dotfiles repo:
+- Then, clone and symlink the .dotfiles repo:
 
 ```bash
 mkdir -p ~/.config
@@ -57,8 +57,9 @@ mkdir ~/Projects
 cd ~/Projects
 git clone git@github.com:simplystuart/.dotfiles.git
 ln -s ~/Projects/.dotfiles ~/.config/home-manager
+```
 
-Finally, pull down large files via Git LFS:
+- Finally, pull down large files via Git LFS:
 
 ```bash
 cd ~/Projects/.dotfiles
