@@ -150,7 +150,7 @@
         size = 1000000000;
       };
       initExtra = ''
-        export BUNDLE_CACHE_PATH="$HOME/.cache/bundle"
+        # general
         export EDITOR=vim
         export PATH="$HOME/.local/bin:$PATH"
 
@@ -169,10 +169,18 @@
         # homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
+        # python
+        export PYENV_ROOT="$HOME/.pyenv"
+        [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+        eval "$(pyenv init - zsh)"
+
         # lanugages
         source $HOME/.nix-profile/share/asdf-vm/asdf.sh
         source $HOME/.nix-profile/share/chruby/chruby.sh
         source $HOME/.nix-profile/share/chruby/auto.sh
+
+        # ruby
+        export BUNDLE_CACHE_PATH="$HOME/.cache/bundle"
       '';
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
