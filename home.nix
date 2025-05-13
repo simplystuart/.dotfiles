@@ -30,11 +30,6 @@
     '';
   };
 
-  home.file.".config/iterm2/com.googlecode.iterm2.plist" = {
-    source = ./iterm2.plist;
-    target = ".config/iterm2/com.googlecode.iterm2.plist";
-  };
-
   home.file.".config/nvim" = {
     recursive = true;
     source = ./nvim;
