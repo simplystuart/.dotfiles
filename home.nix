@@ -30,6 +30,11 @@
     '';
   };
 
+  home.file.".config/iterm2/com.googlecode.iterm2.plist" = {
+    source = ./iterm2.plist;
+    target = ".config/iterm2/com.googlecode.iterm2.plist";
+  };
+
   home.file.".config/nvim" = {
     recursive = true;
     source = ./nvim;
@@ -176,10 +181,10 @@
 
         # lanugages
         source $HOME/.nix-profile/share/asdf-vm/asdf.sh
-        source $HOME/.nix-profile/share/chruby/chruby.sh
-        source $HOME/.nix-profile/share/chruby/auto.sh
 
         # ruby
+        source $HOME/.nix-profile/share/chruby/chruby.sh
+        source $HOME/.nix-profile/share/chruby/auto.sh
         export BUNDLE_CACHE_PATH="$HOME/.cache/bundle"
       '';
       shellAliases = {
