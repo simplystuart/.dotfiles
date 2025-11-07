@@ -50,6 +50,7 @@
   home.packages = [
     pkgs.asdf-vm
     pkgs.bat
+    pkgs.bun
     pkgs.chruby
     pkgs.coreutils
     pkgs.curl
@@ -152,7 +153,7 @@
       initExtra = ''
         # general
         export EDITOR=vim
-        export PATH="$HOME/.local/bin:$PATH"
+        export PATH="$HOME/.local/bin:$HOME/.bun:$PATH"
 
         # graphite
         _gt_yargs_completions()
