@@ -30,6 +30,11 @@
     '';
   };
 
+  home.file.".config/ghostty/config" = {
+    source = ./config;
+    target = ".config/ghostty/config";
+  };
+
   home.file.".config/nvim" = {
     recursive = true;
     source = ./nvim;
