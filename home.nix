@@ -158,7 +158,11 @@
       initContent = ''
         # general
         export EDITOR=vim
-        export PATH="$HOME/.local/bin:$HOME/.bun:$PATH"
+        export PATH="$HOME/.local/bin:$PATH"
+
+        # bun
+        export BUN_INSTALL="$HOME/.bun"
+        [ -f "$BUN_INSTALL/bin/bun" ] && export PATH="$BUN_INSTALL/bin:$PATH"
 
         # graphite
         _gt_yargs_completions()
@@ -175,13 +179,17 @@
         # homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
+        # lanugages
+        source $HOME/.nix-profile/share/asdf-vm/asdf.sh
+
+        # opencode
+        export OPENCODE_INSTALL="$HOME/.opencode"
+        [ -f "$OPENCODE_INSTALL/bin/opencode" ] && export PATH="$OPENCODE_INSTALL/bin:$PATH"
+
         # python
         export PYENV_ROOT="$HOME/.pyenv"
         [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
         eval "$(pyenv init - zsh)"
-
-        # lanugages
-        source $HOME/.nix-profile/share/asdf-vm/asdf.sh
 
         # ruby
         source $HOME/.nix-profile/share/chruby/chruby.sh
