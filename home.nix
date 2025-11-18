@@ -106,16 +106,16 @@
     fzf.enable = true;
 
     git = {
-      aliases = {
-        cm = "commit";
-        co = "checkout";
-        df = "diff";
-        fp = "push --force-with-lease";
-        sh = "show";
-        st = "status";
-      };
       enable = true;
-      extraConfig = {
+      settings = {
+        alias = {
+          cm = "commit";
+          co = "checkout";
+          df = "diff";
+          fp = "push --force-with-lease";
+          sh = "show";
+          st = "status";
+        };
         init.defaultBranch = "main";
         pull.ff = "only";
         push.autoSetupRemote = true;
@@ -155,7 +155,7 @@
         save = 1000000000;
         size = 1000000000;
       };
-      initExtra = ''
+      initContent = ''
         # general
         export EDITOR=vim
         export PATH="$HOME/.local/bin:$HOME/.bun:$PATH"
