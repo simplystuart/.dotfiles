@@ -117,6 +117,7 @@
           st = "status";
         };
         init.defaultBranch = "main";
+        merge.ff = "only";
         pull.ff = "only";
         push.autoSetupRemote = true;
       };
