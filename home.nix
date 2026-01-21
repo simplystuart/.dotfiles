@@ -196,6 +196,12 @@
         source $HOME/.nix-profile/share/chruby/chruby.sh
         source $HOME/.nix-profile/share/chruby/auto.sh
         export BUNDLE_CACHE_PATH="$HOME/.cache/bundle"
+
+        # rust
+        export CARGO_HOME="$HOME/.cargo"
+        export RUSTUP_HOME="$HOME/.rustup"
+        [ -f "$CARGO_HOME/env" ] && source "$CARGO_HOME/env"
+        [ -f "$CARGO_HOME/bin" ] && export PATH="$CARGO_HOME/bin:$PATH"
       '';
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
