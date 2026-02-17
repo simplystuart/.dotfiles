@@ -75,13 +75,19 @@ cd ~/.config/home-manager
 nix run . switch
 ```
 
-5. Install rosetta:
+5. Install Rust
 
 ```bash
-softwareupdate --install-rosetta
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-## Inpsirations
+6. Install `tree-sitter-cli
+
+```bash
+cargo install --locked tree-sitter-cli
+```
+
+## Inspirations
 
 - [0 to LSP : Neovim RC From Scratch](https://youtu.be/w7i4amO_zaE?feature=shared)
 - [Tidying up your $HOME with Nix](https://juliu.is/tidying-your-home-with-nix/)

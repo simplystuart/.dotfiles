@@ -1,14 +1,14 @@
 local to_formatter = function(formatters_dict)
-	for _, formatter in pairs(formatters_dict) do
-		local items = {}
+	local items = {}
 
+	for _, formatter in pairs(formatters_dict) do
 		for _, item in pairs(formatter) do
 			local conform_name = string.gsub(item, "_", "-")
 			table.insert(items, conform_name)
 		end
-
-		return items
 	end
+
+	return items
 end
 
 return {
@@ -17,19 +17,15 @@ return {
 		bash = { "beautysh" },
 		elm = { "elm_format" },
 		css = { "stylelint" },
-		haskell = { "ormolu" },
 		html = { "htmlbeautifier" },
 		javascript = { "prettierd", "prettier" },
 		typescript = { "prettierd", "prettier" },
 		lua = { "stylua" },
-		ruby = { "standardrb" },
 		rust = { "rustfmt" },
 	},
 	lsps = {
 		"elmls",
-		"hls",
 		"lua_ls",
-		"ruby_lsp",
 		"rust_analyzer",
 		"ts_ls",
 	},
@@ -43,7 +39,6 @@ return {
 		"jsdoc",
 		"json",
 		"lua",
-		"ruby",
 		"rust",
 		"typescript",
 		"vimdoc",

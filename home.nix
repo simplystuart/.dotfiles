@@ -8,11 +8,6 @@
   };
 
   home.activation = {
-    unlinkLastLazyLock = lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
-      if [ -e $HOME/.config/nvim/lazy-lock.json ]; then
-        unlink $HOME/.config/nvim/lazy-lock.json
-      fi
-    '';
     addBatTheme = lib.hm.dag.entryAfter [ "installPackages" ] ''
       if [ ! -d $HOME/.config/bat/themes ]; then
         mkdir -p $HOME/.config/bat/themes
@@ -21,12 +16,7 @@
       fi
     '';
     linkLatestLazyLock = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      ln -s $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
-    '';
-    linkRubies = lib.hm.dag.entryAfter [ "linkGeneration" ] ''
-      if [ ! -e $HOME/.rubies ]; then
-        ln -s $HOME/.asdf/installs/ruby $HOME/.rubies
-      fi
+      ln -sf $HOME/.config/home-manager/lazy-lock.json $HOME/.config/nvim/lazy-lock.json
     '';
   };
 
@@ -56,7 +46,6 @@
     pkgs.asdf-vm
     pkgs.bat
     pkgs.bun
-    pkgs.chruby
     pkgs.coreutils
     pkgs.curl
     pkgs.elmPackages.elm
@@ -162,54 +151,46 @@
         export PATH="$HOME/.local/bin:$PATH"
 
         # bun
-        export BUN_INSTALL="$HOME/.bun"
-        [ -f "$BUN_INSTALL/bin/bun" ] && export PATH="$BUN_INSTALL/bin:$PATH"
-
-        # graphite
-        _gt_yargs_completions()
-        {
-          local reply
-          local si=$IFS
-          IFS=$'
-        ' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "''${words[@]}"))
-          IFS=$si
-          _describe 'values' reply
-        }
-        compdef _gt_yargs_completions gt
+        if [[ -d "$HOME/.bun" ]]; then
+          export BUN_INSTALL="$HOME/.bun"
+          [ -f "$BUN_INSTALL/bin/bun" ] && export PATH="$BUN_INSTALL/bin:$PATH"
+        fi
 
         # homebrew
         eval "$(/opt/homebrew/bin/brew shellenv)"
 
-        # lanugages
-        source $HOME/.nix-profile/share/asdf-vm/asdf.sh
+        # local overrides
+        [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
         # opencode
-        export OPENCODE_INSTALL="$HOME/.opencode"
-        [ -f "$OPENCODE_INSTALL/bin/opencode" ] && export PATH="$OPENCODE_INSTALL/bin:$PATH"
+        if [[ -d "$HOME/.opencode" ]]; then
+          export OPENCODE_INSTALL="$HOME/.opencode"
+          [ -f "$OPENCODE_INSTALL/bin/opencode" ] && export PATH="$OPENCODE_INSTALL/bin:$PATH"
+        fi
 
         # python
-        export PYENV_ROOT="$HOME/.pyenv"
-        [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-        eval "$(pyenv init - zsh)"
-
-        # ruby
-        source $HOME/.nix-profile/share/chruby/chruby.sh
-        source $HOME/.nix-profile/share/chruby/auto.sh
-        export BUNDLE_CACHE_PATH="$HOME/.cache/bundle"
+        if [[ -d "$HOME/.pyenv" ]]; then
+          export PYENV_ROOT="$HOME/.pyenv"
+          [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+          eval "$(pyenv init - zsh)"
+        fi
 
         # rust
-        export CARGO_HOME="$HOME/.cargo"
-        export RUSTUP_HOME="$HOME/.rustup"
-        [ -f "$CARGO_HOME/env" ] && source "$CARGO_HOME/env"
-        [ -f "$CARGO_HOME/bin" ] && export PATH="$CARGO_HOME/bin:$PATH"
+        if [[ -d "$HOME/.cargo" ]]; then
+          export CARGO_HOME="$HOME/.cargo"
+          export RUSTUP_HOME="$HOME/.rustup"
+          [ -f "$CARGO_HOME/env" ] && source "$CARGO_HOME/env"
+          [ -d "$CARGO_HOME/bin" ] && export PATH="$CARGO_HOME/bin:$PATH"
+        fi
       '';
       shellAliases = {
         cat = "bat --theme=\"Everforest Dark\"";
-        clean = "nix-collect-garbage -d && nix flake update";
+        clean = "nix-collect-garbage -d";
         g = "git";
         ls = "exa --group-directories-first";
         reload = "exec $SHELL -l";
         reno = "home-manager switch -b bak";
+        update = "nix flake update && home-manager switch -b bak";
       };
       syntaxHighlighting.enable = true;
     };

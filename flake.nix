@@ -14,7 +14,7 @@
     arch = "aarch64-darwin";
     username = "stuartdum";
   in {
-    defaultPackage.${arch} = home-manager.defaultPackage.${arch};
+    packages.${arch}.default = home-manager.packages.${arch}.default;
 
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${arch};
