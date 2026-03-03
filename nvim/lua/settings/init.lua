@@ -15,6 +15,10 @@ vim.opt.smartindent = true
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 
+-- local options at .nvim.lua
+vim.opt.exrc = true
+vim.opt.secure = true
+
 -- search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
