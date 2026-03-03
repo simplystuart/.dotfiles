@@ -9,6 +9,9 @@ return {
 					i = { ["<C-y>"] = "select_vertical" },
 					n = { ["<C-y>"] = "select_vertical" },
 				},
+				preview = {
+					treesitter = false,
+				},
 			},
 		})
 
