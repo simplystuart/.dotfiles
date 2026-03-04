@@ -1,10 +1,13 @@
 local to_formatter = function(formatters_dict)
+	local keep = { eslint_d = true }
 	local items = {}
 
 	for _, formatter in pairs(formatters_dict) do
 		for _, item in pairs(formatter) do
-			local conform_name = string.gsub(item, "_", "-")
-			table.insert(items, conform_name)
+			if type(item) == "string" then
+				local conform_name = not keep[item] and string.gsub(item, "_", "-") or item
+				table.insert(items, conform_name)
+			end
 		end
 	end
 
@@ -18,8 +21,8 @@ return {
 		elm = { "elm_format" },
 		css = { "stylelint" },
 		html = { "htmlbeautifier" },
-		javascript = { "prettierd", "prettier" },
-		typescript = { "prettierd", "prettier" },
+		javascript = { "eslint_d", "prettierd", "prettier", stop_after_first = true },
+		typescript = { "eslint_d", "prettierd", "prettier", stop_after_first = true },
 		lua = { "stylua" },
 		rust = { "rustfmt" },
 	},
