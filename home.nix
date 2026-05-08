@@ -150,6 +150,9 @@
         export EDITOR=vim
         export PATH="$HOME/.local/bin:$PATH"
 
+        # asdf
+        source "${pkgs.asdf-vm}/etc/profile.d/asdf-prepare.sh"
+
         # bun
         if [[ -d "$HOME/.bun" ]]; then
           export BUN_INSTALL="$HOME/.bun"
