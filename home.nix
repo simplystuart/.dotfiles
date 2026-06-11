@@ -171,6 +171,12 @@
           [ -f "$OPENCODE_INSTALL/bin/opencode" ] && export PATH="$OPENCODE_INSTALL/bin:$PATH"
         fi
 
+        # pnpm
+        if [[ -d "$HOME/.local/share/pnpm" ]]; then
+          export PNPM_HOME="$HOME/.local/share/pnpm"
+          export PATH="$PNPM_HOME:$PATH"
+        fi
+
         # python
         if [[ -d "$HOME/.pyenv" ]]; then
           export PYENV_ROOT="$HOME/.pyenv"
