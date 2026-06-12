@@ -174,7 +174,7 @@
         # pnpm
         if [[ -d "$HOME/.local/share/pnpm" ]]; then
           export PNPM_HOME="$HOME/.local/share/pnpm"
-          export PATH="$PNPM_HOME:$PATH"
+          export PATH="$PNPM_HOME/bin:$PATH"
         fi
 
         # python
